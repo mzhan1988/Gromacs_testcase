@@ -6,7 +6,7 @@
   
 随机生成的水分子盒子，不包含蛋白质分子。可以通过调节模拟盒子大小，生成不同大小的测试算例。  
   
-### 算例构建步骤（采用Gromacs2018.4构建）  
+#### 算例构建步骤（采用Gromacs2018.4构建）  
   
 本节记录了waterbox算例构建方法，供后续生成新算例参考。算例只需构建一次，后续性能评估测试使用生成的.tpr文件即可。  
 构建步骤：  
@@ -30,21 +30,21 @@ topol.top  拓扑文件
   
 Gromacs中配置文件为 .mdp文件，所有配置选项都在此文件中。  
   
-### 构建waterbox PME算例  
+#### 构建waterbox PME算例  
 1）拷贝配置文件md_pme.mdp  
 2）生成算例输入：  
 gmx grompp -f md_pme.mdp -p topol.top -c nvt.gro -o md_pme.tpr  
 3）算例测试：  
 gmx mdrun -v -ntmpi 1 -ntomp 4 -gpu_id 0 -deffnm md_pme  
   
-### 构建waterbox cutoff算例(关闭PME)  
+#### 构建waterbox cutoff算例(关闭PME)  
 1）拷贝配置文件md_cutoff.mdp  
 2）生成算例输入  
 gmx grompp -f md_cutoff.mdp -p topol.top -c nvt.gro -o md_cutoff.tpr  
 3）算例测试：  
 gmx mdrun -v -ntmpi 1 -ntomp 4 -gpu_id 0 -deffnm md_cutoff  
   
-### 性能测试说明  
+#### 性能测试说明  
 关闭PME的测试使用md_cutoff.tpr输入文件即可  
   
 分子动力模拟是显示积分求解过程，每步积分的时间都是固定的。积分步长在 .mdp配置文件中。  
