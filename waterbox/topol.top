@@ -1,0 +1,40 @@
+;
+;	File 'topol.top' was generated
+;	By user: lindahl (1025)
+;	On host: tcbm02.theophys.kth.se
+;	At date: Wed Nov  9 17:53:34 2011
+;
+;	This is a standalone topology file
+;
+;	It was generated using program:
+;	pdb2gmx - VERSION 4.5.5-dev-20110928-89048-dirty-unknown
+;
+;	Command line was:
+;	pdb2gmx -f 1YKF.pdb 
+;
+;	Force field was read from the standard Gromacs share directory.
+;
+
+; Include forcefield parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+; Include water topology
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+WATER BOX in water
+
+[ molecules ]
+; Compound        #mols
+SOL             56582
