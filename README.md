@@ -57,10 +57,8 @@ nsteps                  = 50000
 gmx grompp -f md_cutoff.mdp -p topol.top -c nvt.gro -o md_cutoff.tpr  
 3）用新生成的 .tpr文件进行模拟测试：  
 gmx mdrun -v -ntmpi 1 -ntomp 4 -gpu_id 0 -deffnm md_cutoff  
-
-
-
-
-
-
-
+  
+## waterbox_small  
+  
+A small cubic water box testcase, with 3.0x3.0x3.0nm, 2652 atoms
+Used for debug purpose
